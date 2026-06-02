@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Exam Score Predictor</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #121212;
+        color: #f0f0f0;
+        padding: 30px;
+        margin: 0;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        color: #00ffc8;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        color: #00ffc8;
+        margin-top: 20px;
+      }
+
+      p,
+      ul {
+        max-width: 800px;
+        text-align: justify;
+        font-size: 1em;
+        margin-bottom: 15px;
+      }
+
+      ul {
+        list-style-type: square;
+      }
+
+      .button {
+        padding: 12px 20px;
+        font-weight: bold;
+        background: #00ffc8;
+        color: black;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        font-size: 1em;
+        margin-top: 20px;
+      }
+
+      .button:hover {
+        background: #00e6b8;
+      }
+
+      nav {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+      }
+
+      nav a {
+        color: #00ffc8;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1em;
+      }
+
+      form {
+        width: 100%;
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        background-color: #1e1e1e;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #00ffc866;
+      }
+
+      input,
+      select {
+        padding: 10px;
+        border-radius: 6px;
+        border: none;
+        background-color: #2a2a2a;
+        color: white;
+        font-size: 14px;
+      }
+
+      #result {
+        margin-top: 20px;
+        font-size: 1.3em;
+        color: #00ffc8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="homePage" class="container">
+      <h1>Student Exam Performance Predictor</h1>
+
+      <p>
+        The Student Exam Performance Predictor is an educational project that
+        illustrates how machine learning can be applied to forecast student
+        performance based on various influencing factors. This tool is designed
+        to provide insights into academic achievement rather than offer
+        definitive evaluations.
+      </p>
+
+      <h2>🎯 Objective</h2>
+      <p>
+        The goal of this application is to predict mathematics exam scores based
+        on inputs such as gender, ethnicity, parental education level, lunch
+        type, and test preparation status. It aims to provide interpretability
+        into what affects academic performance the most.
+      </p>
+
+      <h2>🔍 Key Features</h2>
+      <ul>
+        <li>
+          Predicts mathematics performance using a trained machine learning
+          model
+        </li>
+        <li>Analyzes key demographic and academic factors</li>
+        <li>Interactive and user-friendly web interface</li>
+      </ul>
+
+      <h2>📊 Dataset</h2>
+      <p>
+        The model is trained on the publicly available "Students Performance in
+        Exams" dataset from Kaggle, which includes information on student
+        demographics and academic records.
+      </p>
+
+      <h2>🧠 Model</h2>
+      <p>
+        The model uses a supervised learning algorithm (e.g., decision tree or
+        random forest) trained on split data to predict math scores. The dataset
+        is split into training and testing sets for evaluation.
+      </p>
+
+      <h2>🛠 Technologies</h2>
+      <ul>
+        <li>Python, Flask</li>
+        <li>Pandas, NumPy, Scikit-learn</li>
+        <li>HTML, CSS</li>
+      </ul>
+
+      <button class="button" onclick="openWebApp()">Web App</button>
+    </div>
+
+    <div id="webApp" class="container" style="display: none">
+      <nav>
+        <a href="#" onclick="returnToHome()">← Home</a>
+      </nav>
+
+      <h1>Student Exam Score Predictor</h1>
+      <form id="predictionForm">
+        <input
+          type="number"
+          name="Hours_Studied"
+          placeholder="Hours Studied"
+          required
+        />
+        <input
+          type="number"
+          name="Attendance"
+          placeholder="Attendance (%)"
+          required
+        />
+        <select name="Parental_Involvement" required>
+          <option value="">Parental Involvement</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+        <select name="Access_to_Resources" required>
+          <option value="">Access to Resources</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+        <select name="Extracurricular_Activities" required>
+          <option value="">Extracurricular Activities</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <input
+          type="number"
+          name="Sleep_Hours"
+          placeholder="Sleep Hours"
+          required
+        />
+        <input
+          type="number"
+          name="Previous_Scores"
+          placeholder="Previous Scores"
+          required
+        />
+        <select name="Motivation_Level" required>
+          <option value="">Motivation Level</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+        <select name="Internet_Access" required>
+          <option value="">Internet Access</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <input
+          type="number"
+          name="Tutoring_Sessions"
+          placeholder="Tutoring Sessions"
+          required
+        />
+        <select name="Family_Income" required>
+          <option value="">Family Income</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+        <select name="Teacher_Quality" required>
+          <option value="">Teacher Quality</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+        <select name="School_Type" required>
+          <option value="">School Type</option>
+          <option>Public</option>
+          <option>Private</option>
+        </select>
+        <select name="Peer_Influence" required>
+          <option value="">Peer Influence</option>
+          <option>Positive</option>
+          <option>Neutral</option>
+          <option>Negative</option>
+        </select>
+        <input
+          type="number"
+          name="Physical_Activity"
+          placeholder="Physical Activity (hrs/week)"
+          required
+        />
+        <select name="Learning_Disabilities" required>
+          <option value="">Learning Disabilities</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <select name="Parental_Education_Level" required>
+          <option value="">Parental Education Level</option>
+          <option>High School</option>
+          <option>College</option>
+          <option>Postgraduate</option>
+        </select>
+        <select name="Distance_from_Home" required>
+          <option value="">Distance from Home</option>
+          <option>Near</option>
+          <option>Moderate</option>
+          <option>Far</option>
+        </select>
+        <select name="Gender" required>
+          <option value="">Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+
+        <button type="submit" class="button">Predict Exam Score</button>
+      </form>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function openWebApp() {
+        document.getElementById("homePage").style.display = "none";
+        document.getElementById("webApp").style.display = "flex";
+      }
+
+      function returnToHome() {
+        document.getElementById("webApp").style.display = "none";
+        document.getElementById("homePage").style.display = "flex";
+      }
+
+      document
+        .getElementById("predictionForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+          const formData = new FormData(event.target);
+          const data = {};
+          formData.forEach(
+            (value, key) => (data[key] = isNaN(value) ? value : Number(value)),
+          );
+
+          const response = await fetch("/predict", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+
+          const result = await response.json();
+
+          if (result.predicted_score !== undefined) {
+            document.getElementById("result").innerText =
+              "Predicted Exam Score: " + result.predicted_score.toFixed(2);
+          } else {
+            document.getElementById("result").innerText =
+              "Error: " + (result.error || "Unknown error");
+          }
+        });
+    </script>
+  </body>
+</html>
